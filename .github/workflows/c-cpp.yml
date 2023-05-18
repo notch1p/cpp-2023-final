@@ -8,14 +8,12 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
-    - name: cd
-      run: cd src
     - name: make
+      working-directory: ./src
       run: make
     - name: rename
+      working-directory: ./src
       run: mv main ../main-linux-amd64
