@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: of-EvanMacbook
     steps:
       - uses: actions/checkout@v3
       - name: autoconf
