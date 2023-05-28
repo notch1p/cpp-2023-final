@@ -37,57 +37,86 @@
 
 ## 二、文件结构
 
-以下是本实训的文件结构，通过`tree` 生成。 **声明** 以下所列文件之作者都是本人。 
+以下是本实训的文件结构，通过`tree` 生成。 **声明** 以下所列文件之作者都是本人。
 
 ```shell
 .
-├── Makefile # make用自动编译脚本
-├── assets # markdown文档使用素材
+├── LICENSE
+├── Makefile.am # autoconf脚本
+├── Makefile.in
+├── README.md
+├── aclocal.m4 # autoconf相关
+├── assets # md文档使用素材
 │   ├── image-20230515000408869.png
 │   ├── image-20230515000459499.png
 │   ├── image-20230515002112455.png
 │   ├── image-20230515002152321.png
 │   ├── image-20230515004828789.png
 │   ├── image-20230515005009981.png
-│   ├── uml.drawio.pdf # UML图
-│   └── uml.drawio.svg
-├── aux
+│   └── uml.drawio.svg #UML图
+├── autom4te.cache # automake编译缓存
+│   ├── output.0
+│   ├── output.1
+│   ├── output.2
+│   ├── requests
+│   ├── traces.0
+│   ├── traces.1
+│   └── traces.2
+├── aux 
 │   └── bookstore.cpp # 本实训由此重写而来，都是本人所作
-├── base.hpp # Base类定义和实现
-├── book.cpp # Book类定义和实现
-├── book.hpp
-├── books.csv # Book用测试样例数据库
-├── csv.cpp # CSV读写功能定义和实现
-├── csv.hpp
-├── data.h # Static成员定义
-├── database.hpp # Database容器模板库定义和实现
-├── database.tpp
-├── exec.cpp # 程序主要流程定义和实现
-├── exec.hpp
-├── interface.cpp # 程序界面依赖库定义和实现
-├── interface.hpp
+├── build_aux # 存放安装卸载等脚本
+│   ├── depcomp
+│   ├── install-sh
+│   └── missing
+├── configure # configure脚本
+├── configure.ac # configure源
 ├── main-darwin-aarch64 # macOS下编译得到的二进制文件， arm64
 ├── main-linux-amd64 # linux下编译得到的二进制文件，amd64
-├── main.cpp # 主程序，程序入口代码
-├── main.exe # windows下编译得到的二进制文件，amd64
-├── user.cpp # User类定义和实现
-├── user.hpp
-├── users.csv # User用测试样例数据库
-├── 实训设计报告.md
-└── 实训设计报告.pdf
+├── main-windows-amd64.exe # windows下编译得到的二进制文件，amd64
+├── src # 源代码
+│   ├── Makefile # make用自动编译脚本，Windows用，其他环境应该用autotool
+│   ├── base.hpp # Base类定义和实现
+│   ├── book.cpp
+│   ├── book.hpp # Book类定义和实现
+│   ├── books.csv # Book用测试样例数据库
+│   ├── csv.cpp # CSV读写功能定义和实现
+│   ├── csv.hpp
+│   ├── data.h # Static成员定义
+│   ├── database.hpp # Database容器模板库定义和实现
+│   ├── database.tpp
+│   ├── exec.cpp # 程序主要流程定义和实现
+│   ├── exec.hpp
+│   ├── interface.cpp # 程序界面依赖库定义和实现
+│   ├── interface.hpp
+│   ├── main.cpp # 主程序，程序入口代码
+│   ├── user.cpp # User类定义和实现
+│   ├── user.hpp
+│   └── users.csv # User用测试样例数据库
+└── report.md # 报告
 
-3 directories, 33 files
+6 directories, 48 files
 ```
 
 macOS平台的程序是在本人电脑上编译完成的；Windows平台的程序是在机房电脑编译完成的；Linux平台的程序是在Arch下编译完成的，经过测试都可以正常运行。
 
 ### 编译指南
 
-**代码遵守C++17标准**
+**代码遵守C++17标准，使用autotool构建**
 
-在macOS或Linux上通过 `make all` 来编译， `make clean`清除所有目标文件；`make clear` 清除所有目标文件和可执行文件。默认使用 `clang` 进行编译，有必要更换则请自行修改Makefile.
+#### 类Unix
 
-在Windows上可以通过minGW自带的 `minGW-make` 来编译。
+使用autotool自动编译
+
+```shell
+./configure
+make -j${nproc}
+```
+
+这将在根目录生成可执行文件`bookstore`.
+
+#### Windows
+
+通过 `src/Makefile` 使用minGW自带的 `minGW-make` 来编译。其中 `make clean`清除所有目标文件；`make clear`清除所有编译文件。
 
 ## 三、系统结构略图
 
@@ -190,10 +219,10 @@ A-->结算操作
 此外，程序中多次调用了系统的清屏操作：Windows下(cmd,powershell)是`cls`，Linux和macOS下(ncurses)是`clear`，针对不同平台做了适配。
 
 通过规定输出宽度，可以通过填充空格的方式达到文本置中/置右，且填充数
-```math
+$$
 n(\textup{Space})=\begin{cases}w - l \hspace{7.5mm}\textup{where p = RIGHT}\\
 \frac{w - l}{2}\hspace{10mm}\textup{where p = CENTER}\end{cases}
-```math
+$$
 其中 $w$ 是输出宽度，$l$ 是字串长度，$p$ 是位置。代码中的`ui::printAt()`用到了 $(1)$.
 
 ### 知识点运用
