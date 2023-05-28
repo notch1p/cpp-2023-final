@@ -1,4 +1,4 @@
-name: self-macOS-aarch64-build
+name: ubuntu-amd64-build
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    runs-on: of-EvanMacbook
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: autoconf
