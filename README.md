@@ -4,4 +4,4 @@ Code of my final project for OOP course, synced & sanitized from keybase. The pu
 
 For more info check [here](./report.md)
 
-check [Action](https://github.com/notch1p/cpp-2023-final/actions) for linux automated builds
+check [Action](https://github.com/notch1p/cpp-2023-final/actions) for linux & macOS(Apple Silicon Only) automated builds
