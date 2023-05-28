@@ -1,6 +1,6 @@
 # 实训报告：图书管理系统
 
-<center/><b/>[REDACTED]
+<center/><b>[REDACTED]</b>
 
 ## 一、需求分析
 
@@ -194,7 +194,7 @@ A-->结算操作
 
    6. 所有下架书籍删除
 
-      - 复杂度$O(2n)$. 将所有下架书籍全数删除，缩小数据库体积
+      - 复杂度 $O(2n)$ . 将所有下架书籍全数删除，缩小数据库体积
 
       - 搭配4操作可以实现数据库压缩
 
@@ -219,11 +219,11 @@ A-->结算操作
 此外，程序中多次调用了系统的清屏操作：Windows下(cmd,powershell)是`cls`，Linux和macOS下(ncurses)是`clear`，针对不同平台做了适配。
 
 通过规定输出宽度，可以通过填充空格的方式达到文本置中/置右，且填充数
-$$
+```math
 n(\textup{Space})=\begin{cases}w - l \hspace{7.5mm}\textup{where p = RIGHT}\\
 \frac{w - l}{2}\hspace{10mm}\textup{where p = CENTER}\end{cases}
-$$
-其中 $w$ 是输出宽度，$l$ 是字串长度，$p$ 是位置。代码中的`ui::printAt()`用到了 $(1)$.
+```
+其中 $w$ 是输出宽度， $l$ 是字串长度， $p$ 是位置。代码中的`ui::printAt()`用到了 $(1)$ .
 
 ### 知识点运用
 
