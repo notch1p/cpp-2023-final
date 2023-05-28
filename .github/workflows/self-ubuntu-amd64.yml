@@ -1,0 +1,25 @@
+name: Linux-Build-selfhost
+
+on:
+  push:
+    branches: ["master"]
+  pull_request:
+    branches: ["master"]
+
+jobs:
+  build:
+    runs-on: blog_vultr_mumbai
+    steps:
+      - uses: actions/checkout@v3
+      - name: autoconf
+        run: ./configure
+      - name: make
+        run: make
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          # Artifact name
+          name: main-linux-amd64 # optional, default is artifact
+          # A file, directory or wildcard pattern that describes what to upload
+          path: ./bookstore
+        # The desired behavior if no files are found using the provided path.
