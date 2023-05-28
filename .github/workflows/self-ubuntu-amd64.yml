@@ -8,7 +8,8 @@ on:
 
 jobs:
   build:
-    runs-on: blog_vultr_mumbai
+    runs-on:
+      labels: blog_vultr_mumbai
     steps:
       - uses: actions/checkout@v3
       - name: autoconf
