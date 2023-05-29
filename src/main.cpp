@@ -44,6 +44,7 @@ void which()
 }
 int main(int argc, char** argv)
 {
+    ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
 #if defined _WIN32
     system("chcp 65001");
 #endif

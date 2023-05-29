@@ -270,7 +270,8 @@ n(\textup{Space})=\begin{cases}w - l \hspace{7.5mm}\textup{where p = RIGHT}\\
 
 - STL、流类库
   - vector string bitset
-  - 文件流、字符串流
+  - 文件流、字符串流、输入输出流
+  - 读写加速（将cin cout的速度提高到scanf printf的水准）
 
 ## 五、运行情况与截图
 
