@@ -62,7 +62,7 @@
 │   ├── traces.0
 │   ├── traces.1
 │   └── traces.2
-├── aux 
+├── orig 
 │   └── bookstore.cpp # 本实训由此重写而来，都是本人所作
 ├── build_aux # 存放安装卸载等脚本
 │   ├── depcomp

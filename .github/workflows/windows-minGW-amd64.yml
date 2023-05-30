@@ -13,13 +13,10 @@ jobs:
       run:
         shell: bash
     steps:
-      - name: checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
       - name: autoconf
-        shell: bash
         run: ./configure
       - name: make
-        shell: bash
         run: make
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3.1.2
