@@ -14,9 +14,10 @@ jobs:
         shell: bash
     steps:
       - uses: actions/checkout@v3
-      - name: autoconf
-        run: ./configure
+      # - name: autoconf
+      #   run: ./configure
       - name: make
+        working-directory: ./src
         run: make
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3.1.2
@@ -24,5 +25,5 @@ jobs:
           # Artifact name
           name: main-windows-amd64 # optional, default is artifact
           # A file, directory or wildcard pattern that describes what to upload
-          path: ./bookstore
+          path: ./src/main
         # The desired behavior if no files are found using the provided path.
