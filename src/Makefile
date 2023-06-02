@@ -1,5 +1,5 @@
-CXX = g++
-CXXFLAGS := -O2 -std=c++17
+CXX = clang++
+CXXFLAGS := -O2 -std=c++17 -static
 export CXXFLAGS
 
 all:main
