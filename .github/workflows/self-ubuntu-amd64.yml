@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: autoconf
-        run: ./configure CXXFLAGS="-static" LDFLAGS="-static"
+        run: ./configure CXXFLAGS="-static "
       - name: make
         run: make
       - name: Upload a Build Artifact
