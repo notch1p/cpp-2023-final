@@ -2773,8 +2773,7 @@ END
   fi
 fi
 
-CXXFLAGS+="$CXXFLAGS -O2 -std=c++17 -stdlib=libc++"
-LDFLAGS+="$LDFLAGS -stdlib=libc++"
+CXXFLAGS+="-O2 -std=c++17"
 
 
 
