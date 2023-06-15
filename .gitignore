@@ -39,8 +39,6 @@
 ### https://raw.github.com/github/gitignore/4488915eec0b3a45b5c63ead28f286819c0917de/Autotools.gitignore
 
 # http://www.gnu.org/software/automake
-
-Makefile.in
 /ar-lib
 /mdate-sh
 /py-compile
@@ -54,7 +52,6 @@ Makefile.in
 autom4te.cache
 /autoscan.log
 /autoscan-*.log
-/aclocal.m4
 /compile
 /config.cache
 /config.guess
